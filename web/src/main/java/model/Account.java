@@ -1,9 +1,7 @@
 package model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -12,7 +10,11 @@ import lombok.Data;
 public class Account {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @ManyToOne
+    private User user;
 
     private String nameOfAccount;
 
@@ -21,8 +23,9 @@ public class Account {
     public Account() {
     }
 
-    public Account(Integer id, String nameOfAccount, Integer sumOfAccount) {
+    public Account(Integer id,User user, String nameOfAccount, Integer sumOfAccount) {
         this.id = id;
+        this.user = user;
         this.nameOfAccount = nameOfAccount;
         this.sumOfAccount = sumOfAccount;
     }

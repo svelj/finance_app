@@ -16,11 +16,14 @@ public class Transaction {
 
     private Date date;
 
+    @ManyToOne
+    private Account account;
+
     private String description;
 
     private double amount;
 
-    private Category category;
+    private String category;
 
     @Enumerated(value = EnumType.STRING)
     private Type type;
@@ -28,8 +31,9 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(Integer id, Date date, String description, double amount, Category category, Type type) {
+    public Transaction(Integer id,Account account, Date date, String description, double amount, String category, Type type) {
         this.id = id;
+        this.account = account;
         this.date = date;
         this.description = description;
         this.amount = amount;

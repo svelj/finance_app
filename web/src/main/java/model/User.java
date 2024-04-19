@@ -19,21 +19,18 @@ public class User {
 
     private String surname;
 
-    private Account account;
-
-    private List<Transaction> transaction;
+    @OneToMany(mappedBy = "user")
+    private List<Account> accounts;
 
     public User(){
 
     }
 
-
-    public User(Integer id, String name, String surname, Account account, List<Transaction> funds) {
+    public User(Integer id, String name, String surname, List<Account> accounts ) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.account = account;
-        this.transaction = funds;
+        this.accounts = accounts;
     }
 
     public Integer getId() {
@@ -60,19 +57,11 @@ public class User {
         this.surname = surname;
     }
 
-    public Account getAccount() {
-        return account;
+    public List<Account> getAccounts() {
+        return accounts;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public List<Transaction> getTransaction() {
-        return transaction;
-    }
-
-    public void setTransaction(List<Transaction> transaction) {
-        this.transaction = transaction;
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
 }
