@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Simple API
+  description: A simple API to illustrate OpenAPI concepts
+
+servers:
+  - url: https://example.io/v1
+
+
+paths:
+  /allFunds:
+    get:
+     description: Returns a list of funds,with filter [from-to] 
+     responses:
+        '200':
+          description: Successfully returned a list of funds [from-to]
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - id
+                  properties:
+                    funds:
+                      type: integer
+                    from:
+                      type: integer
+                    to:
+                      type: integer
+                    
+
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+  /addIncome:                
+    post:
+      description: Lets a user add new funds.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object 
+              required:
+                - id
+              properties:
+                funds:
+                  type: integer
+                type_of_income:
+                  type: string
+
+
+      responses:
+        '200':
+          description: Successfully added new funds.
+
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string     
+                    
+  /addExpense:
+    post:
+      description: Lets a user add expense.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object 
+              required:
+                - id
+              properties:
+                funds:
+                  type: integer
+                type_of_expense:
+                  type: string
+
+
+      responses:
+        '200':
+          description: Successfully added new funds.
+
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string                      
