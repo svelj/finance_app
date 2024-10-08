@@ -33,6 +33,11 @@ public class User {
         this.accounts = accounts;
     }
 
+    public User(String name, String surname) {
+        this.name= name;
+        this.surname=surname;
+    }
+
     public Integer getId() {
         return id;
     }

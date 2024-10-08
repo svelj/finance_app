@@ -1,10 +1,10 @@
 package service;
 
-import org.springframework.security.core.userdetails.User;
+import model.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService extends UserDetailsService {
 
-    User register(String name,String surname);
+    User register(String name, String surname);
 
 }
